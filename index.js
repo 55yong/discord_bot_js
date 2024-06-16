@@ -18,19 +18,4 @@ new CommandHandler({
   eventsPath: path.join(__dirname, "events"),
 });
 
-client.on("messageCreate", (message) => {
-  if (message.author.bot) {
-    return;
-  }
-  if (message.content === "핑") {
-    message.channel.send("퐁~!");
-  }
-  if (message.content.includes("안녕")) {
-    message.reply("안녕하세요 반갑습니다~!");
-  }
-  if (message.content.includes("상놈아")) {
-    message.reply("뭐이씨발롬아");
-  }
-});
-
 client.login(token);
