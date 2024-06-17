@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require("discord.js");
+const managerOnly = require("../validations/managerOnly");
 
 module.exports = {
   deleted: false,
@@ -15,4 +16,5 @@ module.exports = {
     const cnt = interaction.options.get("인원수").value;
     interaction.reply(`${cnt}명을 추첨할게요`);
   },
+  managerOnly: true,
 };

@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const managerOnly = require("../validations/managerOnly");
 
 module.exports = {
   deleted: false,
@@ -44,4 +45,5 @@ module.exports = {
 
     interaction.reply({ embeds: [embed] });
   },
+  managerOnly: false,
 };
