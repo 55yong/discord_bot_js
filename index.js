@@ -1,9 +1,6 @@
-const { Client, Events, IntentsBitField } = require("discord.js");
-const { REST } = require("@discordjs/rest");
-const { Routes } = require("discord-api-types/v9");
-const { token, clientId, guildId } = require("./config.json");
+const { Client, IntentsBitField } = require("discord.js");
+const { token } = require("./config.json");
 const { CommandHandler } = require("djs-commander");
-const fs = require("node:fs");
 const path = require("path");
 
 const client = new Client({

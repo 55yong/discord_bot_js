@@ -1,5 +1,4 @@
 const { SlashCommandBuilder } = require("discord.js");
-const managerOnly = require("../validations/managerOnly");
 
 module.exports = {
   deleted: false,
