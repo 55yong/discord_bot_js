@@ -13,7 +13,21 @@ module.exports = {
     ),
   run: ({ interaction }) => {
     const cnt = interaction.options.get("인원수").value;
-    interaction.reply(`${cnt}명을 추첨할게요`);
+    const channel = interaction.member.voice.channel.id;
+    const members = interaction.member.voice.channel.members;
+    const connection_members = [];
+    const winning_members = [];
+
+    members.forEach((key) => {
+      connection_members.push(key);
+    });
+
+    for (let i = 0; i < cnt; i++) {
+      const rand = Math.floor(Math.random() * connection_members.length);
+      winning_members.push(connection_members[rand]);
+    }
+
+    interaction.reply(`:tada: 당첨 :trophy: ${winning_members}`);
   },
   managerOnly: true,
 };
