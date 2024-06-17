@@ -13,23 +13,27 @@ module.exports = {
     ),
   run: ({ interaction }) => {
     const cnt = interaction.options.get("인원수").value;
-    const members = interaction.member.voice.channel.members;
-    const connection_members = [];
-    const winning_members = [];
+    try {
+      const members = interaction.member.voice.channel.members;
+      const connection_members = [];
+      const winning_members = [];
 
-    members.forEach((key) => {
-      connection_members.push(key);
-    });
+      members.forEach((key) => {
+        connection_members.push(key);
+      });
 
-    for (let i = 0; i < cnt; i++) {
-      winning_members.push(
-        connection_members[
-          Math.floor(Math.random() * connection_members.length)
-        ]
-      );
+      for (let i = 0; i < cnt; i++) {
+        winning_members.push(
+          connection_members[
+            Math.floor(Math.random() * connection_members.length)
+          ]
+        );
+      }
+
+      interaction.reply(`:tada: 당첨 :trophy: ${winning_members}`);
+    } catch (e) {
+      interaction.reply("음성 채널에 접속 후 사용해주세요.");
     }
-
-    interaction.reply(`:tada: 당첨 :trophy: ${winning_members}`);
   },
   managerOnly: true,
 };
