@@ -33,7 +33,8 @@ module.exports = {
       interaction.reply(`:tada: 당첨 :trophy: ${winning_members}`);
     } catch (e) {
       interaction.reply("음성 채널에 접속 후 사용해주세요.");
+      console.log(e);
     }
   },
-  managerOnly: true,
+  managerOnly: false,
 };
