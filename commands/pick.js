@@ -10,6 +10,7 @@ module.exports = {
         .setName("인원수")
         .setDescription("추첨할 인원수를 입력해주세요.")
         .setRequired(true)
+        .setMaxValue(3)
     ),
   run: ({ interaction }) => {
     const cnt = interaction.options.get("인원수").value;
