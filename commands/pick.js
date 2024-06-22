@@ -15,23 +15,24 @@ module.exports = {
   run: ({ interaction }) => {
     const cnt = interaction.options.get("인원수").value;
     try {
-      const members = interaction.member.voice.channel.members;
-      const connection_members = [];
-      const winning_members = [];
-
-      members.forEach((key) => {
-        connection_members.push(key);
-      });
-
-      for (let i = 0; i < cnt; i++) {
-        winning_members.push(
-          connection_members[
-            Math.floor(Math.random() * connection_members.length)
-          ]
-        );
+      const members = Array.from(
+        interaction.member.voice.channel.members.values()
+      );
+      if (cnt > members.length) {
+        interaction.reply("추첨할 인원수가 음성 채널의 멤버 수보다 많습니다.");
+        return;
       }
 
-      interaction.reply(`:tada: 당첨 :trophy: ${winning_members}`);
+      const winning_members = [];
+      for (let i = 0; i < cnt; i++) {
+        const randomIndex = Math.floor(Math.random() * members.length);
+        winning_members.push(members.splice(randomIndex, 1)[0]);
+      }
+
+      const winningNames = winning_members
+        .map((member) => member.user.username)
+        .join(", ");
+      interaction.reply(`:tada: 당첨 :trophy: ${winningNames}`);
     } catch (e) {
       interaction.reply("음성 채널에 접속 후 사용해주세요.");
       console.log(e);
