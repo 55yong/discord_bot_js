@@ -40,13 +40,4 @@ rest
   .then(() => console.log("Successfully registered application commands."))
   .catch(console.error);
 
-client.on("messageCreate", (message) => {
-  if (message.author.bot) {
-    return;
-  }
-  if (message.content === "상놈아") {
-    message.reply("뭐이씨발롬아");
-  }
-});
-
 client.login(token);
