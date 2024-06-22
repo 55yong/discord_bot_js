@@ -30,9 +30,9 @@ module.exports = {
       }
 
       const winningNames = winning_members
-        .map((member) => member.user.username)
+        .map((member) => `<@${member.user.id}>`)
         .join(", ");
-      interaction.reply(`:tada: 당첨 :trophy: <@${winningNames}>`);
+      interaction.reply(`:tada: 당첨 :trophy: ${winningNames}`);
     } catch (e) {
       interaction.reply("음성 채널에 접속 후 사용해주세요.");
       console.log(e);
