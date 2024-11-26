@@ -36,7 +36,7 @@ module.exports = {
       const winningNames = winning_members
         .map((member) => `<@${member.user.id}>`)
         .join(", ");
-      interaction.reply(`:tada: Winner :trophy: ${winningNames}`);
+      interaction.reply(`:tada: ${winningNames} picked! :trophy:`);
     } catch (e) {
       interaction.reply(
         "Please join a voice channel before using this command."
