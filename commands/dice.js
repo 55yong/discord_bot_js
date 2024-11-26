@@ -3,8 +3,8 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 module.exports = {
   deleted: false,
   data: new SlashCommandBuilder()
-    .setName("주사위")
-    .setDescription("주사위를 굴려 우선 순위를 정합니다."),
+    .setName("dice")
+    .setDescription("Rolls dice to determine priority."),
   run: ({ interaction }) => {
     let result = "";
     let color = 0x000;
@@ -12,33 +12,33 @@ module.exports = {
     const dice2 = Math.floor(Math.random() * 6 + 1);
 
     if (dice1 > dice2) {
-      result = "1번 주장 선픽";
+      result = "Player 1 gets first pick";
       color = 0xff0000;
     } else if (dice1 < dice2) {
-      result = "2번 주장 선픽";
+      result = "Player 2 gets first pick";
       color = 0x00ff56;
     } else {
-      result = "무승부";
+      result = "It's a tie";
       color = 0xfafa00;
     }
 
     const embed = new EmbedBuilder()
       .setColor(color)
-      .setTitle("주사위 게임 결과")
+      .setTitle("Dice Game Result")
       .addFields(
         {
-          name: "1번",
+          name: "Player 1",
           value: `:game_die: ${dice1}`,
           inline: true,
         },
         {
-          name: "2번",
+          name: "Player 2",
           value: `:game_die: ${dice2}`,
           inline: true,
         }
       )
       .addFields({
-        name: "결과",
+        name: "Result",
         value: `${result}`,
       });
 
